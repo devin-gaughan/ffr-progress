@@ -7,7 +7,12 @@ wins, etc.) so you can see how close you are to "Resonance Rapid Fire" (400) and
 
 Save format: 32-byte "SVHD" header (SHA-1 of body at bytes 8..28), body is
 AES-256-ECB, plaintext is an Unreal Engine 5 GVAS save game.
-Format and key documented by the open-source ffr-save-tracker / ffr-save-editor projects.
+
+Attribution: the container handling and the GVAS property parser below are adapted
+from tools/ffrs_save.py in zabo-dev's MIT-licensed ffr-save-tracker
+(https://github.com/zabo-dev/ffr-save-tracker), which also documents the format and
+key. See THIRD_PARTY.md. The AES implementation, UI, save discovery, live refresh and
+CLI are original to this project.
 
 Pure standard library (tkinter only), so it runs from source on Windows, Linux and
 Steam Deck, and packs into a single .exe with PyInstaller.

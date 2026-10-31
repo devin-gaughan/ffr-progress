@@ -39,14 +39,20 @@ On Linux / Steam Deck it looks inside the Proton prefix
 
 `GameSaveDataN.sav` = 32-byte `SVHD` header (SHA-1 of the body at bytes 8–28) + AES-256-ECB body,
 which decrypts to an Unreal Engine 5 GVAS save (`/Script/mucha.CPP_MuchaGameSaveData`).
-Format and key as documented by the open-source
-[ffr-save-tracker](https://github.com/zabo-dev/ffr-save-tracker) and
-[ffr-save-editor](https://github.com/jesus-seijas-sp/ffr-save-editor) projects.
 
 A note on the files: `GameSaveData0.sav`, `GameSaveData1.sav`, … map to the in-game slots, but
 sources disagree on whether file 0 is the autosave or slot 1, so the app labels them by file number
 and shows each file's last-saved time.
 
+## Credits
+
+The save-container handling and GVAS parser are adapted from the MIT-licensed
+[ffr-save-tracker](https://github.com/zabo-dev/ffr-save-tracker) by zabo-dev, which also
+documents the save format and key; see [THIRD_PARTY.md](THIRD_PARTY.md) for the notice.
+[ffr-save-editor](https://github.com/jesus-seijas-sp/ffr-save-editor) by jesus-seijas-sp
+independently documents the same format. The AES implementation, interface, save discovery,
+live refresh and CLI mode were written for this project.
+
 ## License
 
-MIT
+MIT (see LICENSE); third-party notices in THIRD_PARTY.md.
