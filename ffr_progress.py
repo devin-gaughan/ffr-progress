@@ -310,6 +310,9 @@ def fmt_playtime(seconds):
 # ---------------------------------------------------------------------------
 
 def cli(args):
+    if sys.stdout is None:  # windowed .exe has no console: write next to the exe instead
+        out = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), "ffr_progress_cli.txt")
+        sys.stdout = open(out, "w", encoding="utf-8")
     paths = args or find_saves()
     if not paths:
         print("No saves found. Pass a GameSaveDataN.sav path.")
